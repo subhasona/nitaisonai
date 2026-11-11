@@ -1,0 +1,548 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #350914;
+    color: #fff3e9;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Romantic Background */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+        radial-gradient(circle at 15% 20%,
+        rgba(190, 45, 85, .45), transparent 35%),
+        radial-gradient(circle at 85% 70%,
+        rgba(255, 166, 116, .18), transparent 35%),
+        linear-gradient(135deg,
+        #260711, #6d102c, #3c0719, #18040c);
+}
+
+.ambient-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 0%,
+        rgba(255, 190, 135, .15), transparent 55%);
+    animation: ambient 7s ease-in-out infinite alternate;
+}
+
+@keyframes ambient {
+    from { opacity: .4; }
+    to { opacity: 1; }
+}
+
+/* Fairy Lights */
+
+.fairy-lights {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    z-index: 10;
+    pointer-events: none;
+    background:
+        radial-gradient(circle, #ffe5a3 2px, transparent 4px);
+    background-size: 42px 18px;
+    filter: drop-shadow(0 0 7px #ffbd6b);
+    animation: lights 2s infinite alternate;
+}
+
+@keyframes lights {
+    from { opacity: .5; }
+    to { opacity: 1; }
+}
+
+/* Falling Rose Petals */
+
+#petal-container,
+#sparkle-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.petal {
+    position: absolute;
+    top: -40px;
+    color: #ff9bb4;
+    font-size: 20px;
+    opacity: .85;
+    text-shadow: 0 0 10px #ff426e;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: .9; }
+    90% { opacity: .7; }
+    100% {
+        transform: translate3d(100px, 110vh, 0)
+                   rotate(650deg);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffe5a3;
+    box-shadow: 0 0 12px 3px #ffce85;
+    animation: sparkle 3s ease-in-out forwards;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(.2); }
+    50% { opacity: 1; transform: scale(1.5); }
+    100% { opacity: 0; transform: scale(.2); }
+}
+
+/* Hero */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    background:
+        linear-gradient(rgba(36, 3, 14, .38),
+                        rgba(36, 3, 14, .65)),
+        url("wedding-bg.jpg") center/cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255, 207, 150, .35);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: appear 2s ease;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-heading,
+.letter-top {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #ffd9a1;
+}
+
+.floral-symbol {
+    font-size: 55px;
+    color: #ffd49b;
+    margin: 25px 0;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 12vw, 120px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffe1c2;
+    text-shadow: 0 0 25px rgba(255, 158, 180, .5);
+}
+
+.hero h1 span,
+footer h2 span,
+.couple-signature span {
+    color: #ff9db5;
+}
+
+.hero-subtitle {
+    margin-top: 15px;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.gold-line {
+    height: 1px;
+    width: 110px;
+    background: linear-gradient(90deg,
+        transparent, #f8ce8e, transparent);
+    margin: 25px auto;
+}
+
+.wedding-date {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    color: #ffdfa9;
+    font-size: 20px;
+}
+
+.wedding-time {
+    margin-top: 12px;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+.discover-btn,
+.location-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 15px 28px;
+    color: #3b0a19;
+    background: linear-gradient(120deg,
+        #ffe5b8, #dba65e, #ffe8be);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 11px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+.discover-btn:hover,
+.location-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 207, 150, .55);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #ffcfac;
+}
+
+/* Common Sections */
+
+.section {
+    padding: 100px 7%;
+    position: relative;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-heading > p {
+    color: #ffb8c9;
+    letter-spacing: 4px;
+    font-size: 10px;
+}
+
+.section-heading h2,
+.invitation-card h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 7vw, 75px);
+    font-weight: 400;
+    color: #ffe0bd;
+    margin-top: 10px;
+}
+
+/* Details */
+
+.details-card {
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.detail-item {
+    padding: 35px 15px;
+    text-align: center;
+    background: rgba(255, 228, 208, .07);
+    border: 1px solid rgba(255, 202, 155, .25);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: .4s;
+}
+
+.detail-item:hover {
+    transform: translateY(-8px);
+    border-color: #ffcb91;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .2);
+}
+
+.detail-icon {
+    font-size: 35px;
+    color: #ffb8c9;
+}
+
+.detail-item h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 15px 0 10px;
+    color: #ffe1bd;
+}
+
+.detail-item p {
+    font-size: 13px;
+    color: #f5c9c7;
+}
+
+/* Gallery */
+
+.photo-gallery {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.photo-card {
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid rgba(255, 213, 169, .2);
+    border-radius: 150px 150px 12px 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .3);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s;
+}
+
+.photo-card:hover img {
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 30px 10px 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(transparent, rgba(30, 3, 12, .9));
+    color: #ffe3c0;
+}
+
+/* Invitation */
+
+.invitation {
+    background:
+        radial-gradient(circle at center,
+        rgba(145, 35, 67, .3), transparent 75%);
+}
+
+.invitation-card {
+    max-width: 750px;
+    margin: auto;
+    padding: 60px 45px;
+    text-align: center;
+    border: 1px solid rgba(255, 208, 153, .5);
+    outline: 1px solid rgba(255, 208, 153, .15);
+    outline-offset: 8px;
+    background: linear-gradient(145deg,
+        rgba(255, 224, 205, .1),
+        rgba(90, 12, 35, .45));
+    box-shadow: 0 15px 70px rgba(0, 0, 0, .25);
+}
+
+.letter-decoration {
+    font-size: 45px;
+    color: #f7c88e;
+    margin-bottom: 15px;
+}
+
+.invitation-card h2 {
+    margin: 15px 0;
+}
+
+.letter-text {
+    font-family: 'Playfair Display', serif;
+    color: #f9dfd1;
+    font-size: 16px;
+    line-height: 2;
+    margin: 20px auto;
+    max-width: 570px;
+}
+
+.couple-signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    color: #ffe2bb;
+    margin-top: 35px;
+}
+
+.letter-date {
+    color: #ffcb91;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.bottom-decoration {
+    margin: 30px 0 0;
+}
+
+/* Location */
+
+.location-card {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    padding: 50px 25px;
+    background: rgba(255, 227, 210, .07);
+    border: 1px solid rgba(255, 207, 156, .3);
+    border-radius: 15px;
+}
+
+.location-icon {
+    font-size: 45px;
+}
+
+.location-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    color: #ffe2c1;
+    margin: 20px 0;
+}
+
+.location-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #f3c9cb;
+}
+
+/* Footer */
+
+footer {
+    padding: 65px 20px 30px;
+    text-align: center;
+    background: rgba(15, 2, 8, .4);
+    border-top: 1px solid rgba(255, 207, 150, .2);
+}
+
+.footer-flower {
+    color: #ffd49b;
+    font-size: 40px;
+}
+
+footer h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 65px;
+    font-weight: 400;
+    color: #ffe2c1;
+    margin: 15px 0;
+}
+
+footer p {
+    color: #f5c9c7;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.footer-date {
+    color: #ffdaa5;
+    margin-top: 15px;
+}
+
+.copyright {
+    margin-top: 45px;
+    font-size: 10px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .section {
+        padding: 75px 6%;
+    }
+
+    .details-card {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .photo-card {
+        height: 460px;
+    }
+
+    .invitation-card {
+        padding: 45px 22px;
+    }
+
+    .letter-text {
+        font-size: 14px;
+    }
+
+    .small-heading {
+        letter-spacing: 3px;
+        font-size: 9px;
+    }
+
+    .wedding-date {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .hero::after {
+        inset: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .photo-card {
+        height: 380px;
+    }
+
+    .invitation-card {
+        padding: 35px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+    }
+}
